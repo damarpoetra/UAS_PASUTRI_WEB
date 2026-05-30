@@ -11,3 +11,6 @@ Route::post('/login', [AuthController::class, 'login']);
 // Route untuk Katalog Produk
 // Erin bakal akses ini lewat: http://127.0.0.1:8000/api/products
 Route::get('/products', [ProductController::class, 'index']);
+
+Route::post('/checkout', [ProductController::class, 'checkout']);
+Route::get('/history', [ProductController::class, 'history']);
