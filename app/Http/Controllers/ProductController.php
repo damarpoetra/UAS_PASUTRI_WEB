@@ -74,5 +74,30 @@ public function history()
         'data'    => $orders
     ]);
 }
+// Fungsi buat edit/update data produk
+public function update(Request $request, $id)
+{
+    $product = Product::find($id);
+
+    if (!$product) {
+        return response()->json(['message' => 'Barang gak ada, mau update apaan bro?'], 404);
+    }
+
+    // Validasi input (opsional, tapi bagus buat jaga-jaga)
+    $request->validate([
+        'nama' => 'sometimes|required',
+        'tipe_hp' => 'sometimes|required',
+        'harga' => 'sometimes|required|integer',
+        'stok' => 'sometimes|required|integer',
+    ]);
+
+    // Update data dengan apa yang dikirim di request
+    $product->update($request->all());
+
+    return response()->json([
+        'message' => 'Data produk berhasil diupdate!',
+        'data' => $product
+    ]);
+}
 }
 

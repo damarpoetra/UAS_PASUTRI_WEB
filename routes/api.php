@@ -14,3 +14,5 @@ Route::get('/products', [ProductController::class, 'index']);
 
 Route::post('/checkout', [ProductController::class, 'checkout']);
 Route::get('/history', [ProductController::class, 'history']);
+// Pake PUT atau PATCH biasanya buat update
+Route::put('/products/{id}', [ProductController::class, 'update']);
