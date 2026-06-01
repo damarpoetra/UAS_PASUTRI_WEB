@@ -16,3 +16,8 @@ Route::post('/checkout', [ProductController::class, 'checkout']);
 Route::get('/history', [ProductController::class, 'history']);
 // Pake PUT atau PATCH biasanya buat update
 Route::put('/products/{id}', [ProductController::class, 'update']);
+use App\Http\Controllers\API\CartController;
+
+Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::get('/cart', [CartController::class, 'getCart']);
+Route::delete('/cart/{id}', [\App\Http\Controllers\API\CartController::class, 'deleteCartItem']);
